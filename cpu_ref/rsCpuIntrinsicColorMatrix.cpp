@@ -871,8 +871,8 @@ void RsdCpuScriptIntrinsicColorMatrix::preLaunch(
         mOptKernel = NULL;
         if (build(key)) {
             mOptKernel = (void (*)(void *, const void *, const short *, uint32_t)) mBuf;
-            mLastKey = key;
         }
+        mLastKey = key;
     }
 }
 
