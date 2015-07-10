@@ -522,8 +522,8 @@ static bool SC_IsObject(ObjectBase* o) {
 #ifndef RS_COMPATIBILITY_LIB
 #ifndef __LP64__
 
-// i386 has different struct return passing to ARM; emulate with void*
-#ifdef __i386__
+// i386 and MIPS have different struct return passing to ARM; emulate with void*
+#if defined(__i386__) || defined(__mips__)
 static const void* SC_GetAllocation(const void *ptr) {
     Context *rsc = RsdCpuReference::getTlsContext();
     const Script *sc = RsdCpuReference::getTlsScript();
@@ -533,7 +533,7 @@ static const void* SC_GetAllocation(const void *ptr) {
     return (void*)obj.p;
 }
 #else
-// ARMv7/MIPS
+// ARMv7
 static const android::renderscript::rs_allocation SC_GetAllocation(const void *ptr) {
     Context *rsc = RsdCpuReference::getTlsContext();
     const Script *sc = RsdCpuReference::getTlsScript();
