@@ -91,10 +91,6 @@ include frameworks/compile/libbcc/libbcc-targets.mk
 
 LOCAL_CFLAGS += $(rs_base_CFLAGS)
 
-ifneq ($(ARCH_MIPS_HAS_MSA),)
-    LOCAL_CFLAGS += -mno-msa
-endif
-
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
